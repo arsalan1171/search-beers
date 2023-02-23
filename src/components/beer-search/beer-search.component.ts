@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BeerService} from '../../services/beer/beer.service';
+import { BeerService } from '../../services/beer/beer.service';
 
 
 @Component({
@@ -11,42 +11,41 @@ import {BeerService} from '../../services/beer/beer.service';
 export class BeerSearchComponent implements OnInit {
 
   title = 'Angular Beer Search';
-  searchText: string;
+  searchText: string | undefined;
   beers = Array();
-  error: string;
-  
+  error: string | undefined;
+
   constructor(private _beerService: BeerService) {
-    
-   }
+
+  }
 
   //responsible for retrieving data via the service
-  searchBeer(){
-    if(this.searchText!==""){
-    this._beerService.fetchBeers(this.searchText).subscribe(data=>{
-      this.error= 'nothing found'
-      if(data.length!==0){
-        for(let i=0;i<data.length; i++){        
-          this.beers.push(data[i]);
-          this.error = ''
+  searchBeer() {
+    if (this.searchText !== "") {
+      this._beerService.fetchBeers(this.searchText!).subscribe(data => {
+        this.error = 'nothing found'
+        if (data.length !== 0) {
+          for (let i = 0; i < data.length; i++) {
+            this.beers.push(data[i]);
+            this.error = ''
+          }
         }
       }
+      );
     }
-    );
-  }
-  this.error = 'type something into the search box'
-  this.beers = [];
-
+    this.error = 'type something into the search box'
+    this.beers = [];
   }
 
   //allows to call search function upon pressing enter
-  onEnter(e) { 
-    if(e.keyCode === 13){
+  onEnter(e: any) {
+    if (e.keyCode === 13) {
       this.searchBeer();
-   }
+    }
   }
 
   ngOnInit(): void {
-    
+
   }
 
 }

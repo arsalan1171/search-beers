@@ -1,54 +1,44 @@
 <div class="container text-center">
-    <h1>{{title}}</h1>
-    <hr>
+  <h1>{{title}}</h1>
+  <hr>
 </div>
-  <div class="container wrapper">
-    
-      <div class="search">
-        <input class="search-input" (keyup.enter)="onEnter($event)"
-         type="text" name="search" [(ngModel)]="searchText"
-         autocomplete="off" placeholder="Type name of a beer">
-        <button class="search-btn" type="submit"  (click)="searchBeer()">Search</button>
-        <label class="red-txt">{{error}}</label>
-      </div>
-  
-    <div class="left">
-      <mat-selection-list #beerList  [multiple]="false">
-        <mat-list-option *ngFor="let beer of beers" [value]="beer" >
-          {{beer.name}}
-        </mat-list-option>
-        
-      </mat-selection-list>
+<div class="container wrapper">
 
-      </div>
-    
-      <div [ngClass]="{'details': beerList.selectedOptions.selected.length!==0}" class="right details">
-        <img  *ngIf="beerList.selectedOptions.selected.length!==0"
-        [src]="beerList.selectedOptions.selected[0]?.value.image_url" class="beer-img">
-        <label class="sub-heading"
-          *ngIf="beerList.selectedOptions.selected.length!==0">Name  </label>
-      <p class="txt">
-        {{beerList.selectedOptions.selected[0]?.value.name}}
-      </p>
-      <label class="sub-heading"
-        *ngIf="beerList.selectedOptions.selected.length!==0"> Tagline</label>
-      <p class="txt">
-         {{beerList.selectedOptions.selected[0]?.value.tagline}}
-      </p>
-      <label class="sub-heading"
-        *ngIf="beerList.selectedOptions.selected.length!==0"> First brewed</label>
-      <p class="txt">
-         {{beerList.selectedOptions.selected[0]?.value.first_brewed}}
-      </p>
-      <label class="sub-heading"
-        *ngIf="beerList.selectedOptions.selected.length!==0"> Description</label>
-      <p class="txt">
-         {{beerList.selectedOptions.selected[0]?.value.description}}
-      </p>
-      </div>
+  <div class="search">
+    <input class="search-input" (keyup.enter)="onEnter($event)" type="text" name="search" [(ngModel)]="searchText"
+      autocomplete="off" placeholder="Type name of a beer">
+    <button class="search-btn" type="submit" (click)="searchBeer()">Search</button>
+    <label class="red-txt">{{error}}</label>
+  </div>
+
+  <div class="left">
+    <mat-selection-list #beerList [multiple]="false">
+      <mat-list-option *ngFor="let beer of beers" [value]="beer">
+        {{beer.name}}
+      </mat-list-option>
+
+    </mat-selection-list>
+
+  </div>
+
+  <div [ngClass]="{'details': beerList.selectedOptions.selected.length!==0}" class="right details">
+    <img *ngIf="beerList.selectedOptions.selected.length!==0"
+      [src]="beerList.selectedOptions.selected[0]?.value.image_url" class="beer-img">
+    <label class="sub-heading" *ngIf="beerList.selectedOptions.selected.length!==0">Name </label>
+    <p class="txt">
+      {{beerList.selectedOptions.selected[0]?.value.name}}
+    </p>
+    <label class="sub-heading" *ngIf="beerList.selectedOptions.selected.length!==0"> Tagline</label>
+    <p class="txt">
+      {{beerList.selectedOptions.selected[0]?.value.tagline}}
+    </p>
+    <label class="sub-heading" *ngIf="beerList.selectedOptions.selected.length!==0"> First brewed</label>
+    <p class="txt">
+      {{beerList.selectedOptions.selected[0]?.value.first_brewed}}
+    </p>
+    <label class="sub-heading" *ngIf="beerList.selectedOptions.selected.length!==0"> Description</label>
+    <p class="txt">
+      {{beerList.selectedOptions.selected[0]?.value.description}}
+    </p>
+  </div>
 </div>
-    
-      
-    
- 
-    
