@@ -12,7 +12,7 @@ export class BeerService {
   constructor(private http: HttpClient) { }
 
   fetchBeers(beerName: string): Observable<Beer[]> {
-    return this.http.get<Beer[]>(`${environment.baseUrl}/?beer_name=${beerName}`);
+    return this.http.get<Beer[]>(`${environment.baseUrl}/?beer_name=${encodeURIComponent(beerName)}`);
   }
 
 }
