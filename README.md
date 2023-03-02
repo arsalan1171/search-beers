@@ -31,3 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ![image](https://user-images.githubusercontent.com/25643936/221132161-aebce3c2-6185-413f-814d-1fb27ed7d27b.png)
 ![image](https://user-images.githubusercontent.com/25643936/221132330-0cc81eb2-6c08-47f4-98cc-febdaebdc9d0.png)
 
+[See live](https://master--deft-malasada-528f04.netlify.app/)
+
