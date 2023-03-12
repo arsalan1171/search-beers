@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSelectionListChange } from '@angular/material/list';
 import { BeerService } from '../../services/beer/beer.service';
-
 
 @Component({
   selector: 'beer-search',
@@ -11,41 +11,53 @@ import { BeerService } from '../../services/beer/beer.service';
 export class BeerSearchComponent implements OnInit {
 
   title = 'Angular Beer Search';
-  searchText: string | undefined;
-  beers = Array();
-  error: string | undefined;
 
-  constructor(private _beerService: BeerService) {
+  beers: any[] = [];
+  searchText = '';
+  error = '';
+  selectedBeer: any;
+  hasSelectedOption = false;
 
-  }
+  constructor(private _beerService: BeerService) {}
 
-  //responsible for retrieving data via the service
+  ngOnInit(): void {}
+
   searchBeer() {
-    if (this.searchText !== "") {
-      this._beerService.fetchBeers(this.searchText!).subscribe(data => {
-        this.error = 'nothing found'
-        if (data.length !== 0) {
-          for (let i = 0; i < data.length; i++) {
-            this.beers.push(data[i]);
-            this.error = ''
-          }
-        }
-      }
-      );
+    if (this.searchText === '') {
+      this.error = 'Type something into the search box';
+      return;
     }
-    this.error = 'type something into the search box'
-    this.beers = [];
+  
+    this._beerService.fetchBeers(this.searchText).subscribe(
+      (data: any) => {
+        if (data.length === 0) {
+          this.error = 'Nothing found';
+        } else {
+          this.beers = data;
+          this.error = '';
+          this.searchText = ''; // clear the search box
+        }
+      },
+      (error: any) => {
+        this.error = 'Something went wrong';
+        console.error(error);
+      }
+    );
   }
-
-  //allows to call search function upon pressing enter
+  
   onEnter(e: any) {
     if (e.keyCode === 13) {
       this.searchBeer();
     }
   }
 
-  ngOnInit(): void {
-
+  onSelectionChange(event: MatSelectionListChange) {
+    if (event.option.selected) {
+      this.selectedBeer = event.option.value;
+      this.hasSelectedOption = true;
+    } else {
+      this.selectedBeer = undefined;
+      this.hasSelectedOption = false;
+    }
   }
-
 }

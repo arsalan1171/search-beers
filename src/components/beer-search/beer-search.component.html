@@ -12,33 +12,30 @@
   </div>
 
   <div class="left">
-    <mat-selection-list #beerList [multiple]="false">
-      <mat-list-option *ngFor="let beer of beers" [value]="beer">
+    <mat-selection-list selected="true" (selectionChange)="onSelectionChange($event)" #beerList [multiple]="false">
+      <mat-list-option *ngFor="let beer of beers" [value]="beer" >
         {{beer.name}}
       </mat-list-option>
-
     </mat-selection-list>
-
   </div>
 
-  <div [ngClass]="{'details': beerList.selectedOptions.selected.length!==0}" class="right details">
-    <img *ngIf="beerList.selectedOptions.selected.length!==0"
-      [src]="beerList.selectedOptions.selected[0]?.value.image_url" class="beer-img">
-    <label class="sub-heading" *ngIf="beerList.selectedOptions.selected.length!==0">Name </label>
+  <div [ngClass]="{'details': hasSelectedOption}" class="right details">
+    <img *ngIf="hasSelectedOption" [src]="selectedBeer?.image_url" class="beer-img">
+    <label class="sub-heading" *ngIf="hasSelectedOption">Name </label>
     <p class="txt">
-      {{beerList.selectedOptions.selected[0]?.value.name}}
+      {{selectedBeer?.name}}
     </p>
-    <label class="sub-heading" *ngIf="beerList.selectedOptions.selected.length!==0"> Tagline</label>
+    <label class="sub-heading" *ngIf="hasSelectedOption"> Tagline</label>
     <p class="txt">
-      {{beerList.selectedOptions.selected[0]?.value.tagline}}
+      {{selectedBeer?.tagline}}
     </p>
-    <label class="sub-heading" *ngIf="beerList.selectedOptions.selected.length!==0"> First brewed</label>
+    <label class="sub-heading" *ngIf="hasSelectedOption"> First brewed</label>
     <p class="txt">
-      {{beerList.selectedOptions.selected[0]?.value.first_brewed}}
+      {{selectedBeer?.first_brewed}}
     </p>
-    <label class="sub-heading" *ngIf="beerList.selectedOptions.selected.length!==0"> Description</label>
+    <label class="sub-heading" *ngIf="hasSelectedOption"> Description</label>
     <p class="txt">
-      {{beerList.selectedOptions.selected[0]?.value.description}}
+      {{selectedBeer?.description}}
     </p>
   </div>
 </div>
