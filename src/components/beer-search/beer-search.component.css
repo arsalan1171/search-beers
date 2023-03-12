@@ -1,17 +1,4 @@
-/* styling for the mat list */
-.mat-list-base {
-  overflow: auto;
-  margin-right: 10%;
-  padding: 0%;
-  height: 20rem;
-}
-
-.mat-list-option[aria-selected="true"] {
-  background: powderblue;
-}
-
 /* for the structure of page */
-
 .wrapper {
   display: flex;
 }
@@ -24,14 +11,12 @@
   flex: 1;
 }
 
-
 /* for all the text and headings */
 .red-txt {
   color: red;
 }
 
 .txt {
-  color: #333333;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 300;
@@ -40,8 +25,7 @@
 }
 
 .sub-heading {
-  font-family: 'Enriqueta',
-    arial, serif;
+  font-family: 'Enriqueta', arial, serif;
   line-height: 1.25;
   margin: 0 0 0.625rem;
   font-size: 1.5rem;
@@ -49,8 +33,19 @@
   text-decoration: underline;
 }
 
-/* details content */
+/* styling for the mat list */
+.mat-list-base {
+  overflow: auto;
+  margin-right: 10%;
+  padding: 0%;
+  height: 20rem;
+}
 
+.mat-list-option[aria-selected="true"] {
+  background: powderblue;
+}
+
+/* details content */
 .details {
   background: aliceblue;
   padding: 1%;
@@ -66,20 +61,6 @@
 /* search btn and input */
 .search-btn {
   margin-right: 0.625rem;
-}
-
-input[type=text] {
-  padding: 0.75rem 1.25rem;
-  margin: 0.5rem 0;
-  /* display: flex; */
-  border: 0.0625rem solid #ccc;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  outline: none;
-  margin-right: 0.5rem;
-}
-
-.search-btn {
   background-color: rgb(95, 196, 209);
   color: white;
   padding: 0.75rem 1.125rem;
@@ -89,13 +70,24 @@ input[type=text] {
   cursor: pointer;
 }
 
-hr {
-  border: 0;
-  border-top: 1px solid black;
+input[type=text] {
+  padding: 0.75rem 1.25rem;
+  margin: 0.5rem 0;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  outline: none;
+  margin-right: 0.5rem;
 }
 
 .search {
   margin-right: 2%;
+}
+
+/* general styles */
+hr {
+  border: 0;
+  border-top: 1px solid black;
 }
 
 @media only screen and (max-width: 1024px) {
